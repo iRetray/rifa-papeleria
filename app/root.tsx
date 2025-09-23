@@ -10,7 +10,6 @@ import {
 import { useEffect } from "react";
 import "./app.css";
 import whatsappIcon from "./images/WhatsApp.svg.webp";
-import { analytics } from "./lib/firebase";
 import { deviceService } from "./hooks/useFirebase";
 
 // Función para detectar el tipo de dispositivo

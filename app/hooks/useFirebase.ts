@@ -3,7 +3,6 @@ import {
   addDoc,
   getDocs,
   doc,
-  getDoc,
   onSnapshot,
   updateDoc,
   arrayUnion,
