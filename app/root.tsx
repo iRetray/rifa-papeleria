@@ -96,6 +96,7 @@ const getConnectionType = (): string => {
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const isSeleccionarNumero = location.pathname === "/seleccionar-numero";
+  const isDevMode = location.pathname === "/devMode";
 
   const logDeviceInfo = async () => {
     try {
@@ -192,7 +193,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
 
         {/* Floating WhatsApp Button - Solo en home */}
-        {!isSeleccionarNumero && (
+        {!isSeleccionarNumero && !isDevMode && (
           <Link to="/seleccionar-numero" className="floating-button">
             <img src={whatsappIcon} alt="WhatsApp" className="whatsapp-icon" />
             ¡Comprar mi boleta!

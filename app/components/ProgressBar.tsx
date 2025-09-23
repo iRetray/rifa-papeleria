@@ -6,7 +6,7 @@ interface ProgressBarProps {
 }
 
 export default function ProgressBar({}: ProgressBarProps) {
-  const [soldTickets, setSoldTickets] = useState<string[]>([]);
+  const [soldTickets, setSoldTickets] = useState<number[]>([]);
   const [loading, setLoading] = useState(true);
 
   const total = 300; // Total de boletas disponibles

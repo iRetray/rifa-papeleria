@@ -37,6 +37,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   margin-top: 25px;
+  position: relative;
 }
 
 .hero-section {
@@ -635,4 +636,155 @@ body {
   background-clip: text;
   font-weight: 700;
   text-shadow: none;
+}
+
+/* DevMode Loader */
+.devmode-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loader-content {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 15px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-content p {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* DevMode Styles */
+.dev-auth-section,
+.dev-main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.dev-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.dev-input {
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+  border: 3px solid #003eb3;
+  border-radius: 12px;
+  background: white;
+  color: #333;
+  width: 150px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.auth-input {
+  width: 100px; /* Más largo para el código de acceso */
+}
+
+.dev-input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+  transform: scale(1.02);
+}
+
+.ticket-input {
+  font-family: "Courier New", monospace;
+  letter-spacing: 3px;
+  font-size: 1.4rem;
+}
+
+.dev-button {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: #ad2102;
+  color: white;
+  border: 2px solid #fa541c;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 100px;
+}
+
+.dev-button:hover {
+  background: #fa541c;
+  border-color: #ad2102;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(173, 33, 2, 0.3);
+}
+
+.dev-button:active {
+  transform: translateY(0);
+}
+
+.dev-button:disabled {
+  background-color: #bbb !important;
+  border-color: #999 !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.dev-input:disabled {
+  background-color: #e8e8e8 !important;
+  border-color: #ccc !important;
+  color: #888 !important;
+  cursor: not-allowed !important;
+}
+
+.dev-info {
+  margin-top: 30px;
+  text-align: left;
+  background: #f0f8ff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border-left: 4px solid #4a90e2;
+  align-self: flex-start;
+}
+
+.dev-info p {
+  margin: 0;
+  color: #333;
+  font-size: 0.9rem;
 }

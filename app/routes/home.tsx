@@ -7,7 +7,7 @@ import portadaImage from "../images/portada.jpeg";
 import { ticketService } from "../hooks/useFirebase";
 
 export default function Home() {
-  const [soldTickets, setSoldTickets] = useState<string[]>([]);
+  const [soldTickets, setSoldTickets] = useState<number[]>([]);
   const totalBoletas = 300;
 
   // Escuchar cambios en los tickets vendidos para mostrar mensaje de agotado

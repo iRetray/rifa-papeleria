@@ -6,7 +6,7 @@ import { ticketService } from "../hooks/useFirebase";
 
 export default function SeleccionarNumero() {
   const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
-  const [soldTickets, setSoldTickets] = useState<string[]>([]);
+  const [soldTickets, setSoldTickets] = useState<number[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Crear array de números del 1 al 300
@@ -27,8 +27,8 @@ export default function SeleccionarNumero() {
     };
   }, []);
 
-  // Convertir tickets vendidos a números para comparación
-  const checkedNumbers = soldTickets.map((ticket) => parseInt(ticket, 10));
+  // Los tickets vendidos ya son números
+  const checkedNumbers = soldTickets;
 
   const handleNumberClick = (number: number) => {
     setSelectedNumber(selectedNumber === number ? null : number);
