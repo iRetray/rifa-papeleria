@@ -11,19 +11,9 @@ import {
 import { db } from "../lib/firebase";
 
 // Tipo para los datos del dispositivo
-export interface DeviceLog {
-  info: string;
-}
-
-// Tipo para los tickets vendidos
-export interface TicketsData {
-  soldTickets: number[];
-}
-
-// Funciones para logs de dispositivos
 export const deviceService = {
   // Registrar dispositivo en la colección "devices"
-  async logDevice(data: DeviceLog) {
+  async logDevice(data) {
     try {
       const docRef = await addDoc(collection(db, "devices"), {
         info: data.info,
@@ -35,47 +25,12 @@ export const deviceService = {
       throw error;
     }
   },
-
-  // Obtener estadísticas de dispositivos
-  async getDeviceCount() {
-    try {
-      const querySnapshot = await getDocs(collection(db, "devices"));
-      return querySnapshot.size;
-    } catch (error) {
-      console.error("Error al obtener estadísticas de dispositivos:", error);
-      return 0;
-    }
-  },
 };
 
 // Funciones para tickets vendidos
 export const ticketService = {
-  // Obtener tickets vendidos desde Firestore (una sola vez)
-  async getSoldTickets(): Promise<number[]> {
-    try {
-      // Asumiendo que tienes un solo documento en la colección "tickets"
-      const ticketsCollection = collection(db, "tickets");
-      const querySnapshot = await getDocs(ticketsCollection);
-
-      if (!querySnapshot.empty) {
-        // Tomar el primer documento (ya que mencionaste que solo hay uno)
-        const firstDoc = querySnapshot.docs[0];
-        const data = firstDoc.data() as TicketsData;
-
-        console.log("🎫 Tickets vendidos obtenidos:", data.soldTickets);
-        return data.soldTickets || [];
-      } else {
-        console.log("🎫 No hay documentos en la colección tickets");
-        return [];
-      }
-    } catch (error) {
-      console.error("Error al obtener tickets vendidos:", error);
-      return [];
-    }
-  },
-
   // Escuchar cambios en tiempo real de tickets vendidos
-  onSoldTicketsChange(callback: (tickets: number[]) => void): () => void {
+  onSoldTicketsChange(callback) {
     try {
       const ticketsCollection = collection(db, "tickets");
 
@@ -85,7 +40,7 @@ export const ticketService = {
         (snapshot) => {
           if (!snapshot.empty) {
             const firstDoc = snapshot.docs[0];
-            const data = firstDoc.data() as TicketsData;
+            const data = firstDoc.data();
             const soldTickets = data.soldTickets || [];
 
             console.log("🔄 Tickets actualizados en tiempo real:", soldTickets);
@@ -109,7 +64,7 @@ export const ticketService = {
   },
 
   // Marcar una boleta como vendida
-  async markTicketAsSold(ticketNumber: number): Promise<boolean> {
+  async markTicketAsSold(ticketNumber) {
     try {
       const ticketsCollection = collection(db, "tickets");
       const querySnapshot = await getDocs(ticketsCollection);
@@ -141,22 +96,6 @@ export const ticketService = {
     } catch (error) {
       console.error("❌ Error al marcar ticket como vendido:", error);
       return false;
-    }
-  },
-
-  // Obtener ID del documento principal de tickets
-  async getTicketsDocId(): Promise<string | null> {
-    try {
-      const ticketsCollection = collection(db, "tickets");
-      const querySnapshot = await getDocs(ticketsCollection);
-
-      if (!querySnapshot.empty) {
-        return querySnapshot.docs[0].id;
-      }
-      return null;
-    } catch (error) {
-      console.error("Error al obtener ID del documento:", error);
-      return null;
     }
   },
 };

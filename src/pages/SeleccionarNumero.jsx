@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
 import NumberElement from "../components/NumberElement";
 import whatsappIcon from "../images/WhatsApp.svg.webp";
 import { ticketService } from "../hooks/useFirebase";
 
-export default function SeleccionarNumero() {
-  const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
-  const [soldTickets, setSoldTickets] = useState<number[]>([]);
+export default function SeleccionarNumero({ onNavigate }) {
+  const [selectedNumber, setSelectedNumber] = useState(null);
+  const [soldTickets, setSoldTickets] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Crear array de números del 1 al 300
@@ -27,10 +26,7 @@ export default function SeleccionarNumero() {
     };
   }, []);
 
-  // Los tickets vendidos ya son números
-  const checkedNumbers = soldTickets;
-
-  const handleNumberClick = (number: number) => {
+  const handleNumberClick = (number) => {
     setSelectedNumber(selectedNumber === number ? null : number);
   };
 
@@ -60,9 +56,9 @@ Quiero comprar mi boleta para ganarme la papelería.
   return (
     <div className="home-container">
       <div className="hero-section">
-        <Link to="/" className="back-link">
+        <button onClick={() => onNavigate('home')} className="back-link">
           ↩️ Ir atrás
-        </Link>
+        </button>
         <p className="gallery-title">✅ Elige tu número:</p>
         <p className="tickets-remaining">
           (quedan {loading ? "..." : 300 - soldTickets.length} boletas)
@@ -78,7 +74,7 @@ Quiero comprar mi boleta para ganarme la papelería.
               <NumberElement
                 key={number}
                 number={number}
-                isChecked={checkedNumbers.includes(number)}
+                isChecked={soldTickets.includes(number)}
                 isSelected={selectedNumber === number}
                 onClick={handleNumberClick}
               />

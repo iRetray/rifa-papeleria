@@ -6,8 +6,8 @@ import tituloImage from "../images/titulo.png";
 import portadaImage from "../images/portada.jpeg";
 import { ticketService } from "../hooks/useFirebase";
 
-export default function Home() {
-  const [soldTickets, setSoldTickets] = useState<number[]>([]);
+export default function Home({ onNavigate }) {
+  const [soldTickets, setSoldTickets] = useState([]);
   const totalBoletas = 300;
 
   // Escuchar cambios en los tickets vendidos para mostrar mensaje de agotado
@@ -53,7 +53,7 @@ export default function Home() {
 
         <ProgressBar />
 
-        <ImageGallery />
+        <ImageGallery onViewAll={() => onNavigate('inventario')} />
 
         {soldTickets.length === totalBoletas && (
           <div className="sold-out-message">

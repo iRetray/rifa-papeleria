@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
 
 // Importar todas las imágenes del inventario
 import img1 from "../images/inventario/1.jpeg";
@@ -12,7 +11,7 @@ import img7 from "../images/inventario/7.jpeg";
 
 const images = [img1, img2, img3, img4, img5, img6, img7];
 
-export default function ImageGallery() {
+export default function ImageGallery({ onViewAll }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -62,9 +61,9 @@ export default function ImageGallery() {
 
       {/* Botón Ver Todo */}
       <div className="gallery-button-container">
-        <Link to="/inventario" className="gallery-view-all-button">
+        <button onClick={onViewAll} className="gallery-view-all-button">
           📦 Ver todas las fotos de la mercancia
-        </Link>
+        </button>
       </div>
     </div>
   );

@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
 import { ticketService } from "../hooks/useFirebase";
 
-interface ProgressBarProps {
-  className?: string;
-}
-
-export default function ProgressBar({}: ProgressBarProps) {
-  const [soldTickets, setSoldTickets] = useState<number[]>([]);
+export default function ProgressBar() {
+  const [soldTickets, setSoldTickets] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const total = 300; // Total de boletas disponibles

@@ -1,5 +1,4 @@
 // Importar todas las imágenes del inventario
-import { Link } from "react-router";
 import img1 from "../images/inventario/1.jpeg";
 import img2 from "../images/inventario/2.jpeg";
 import img3 from "../images/inventario/3.jpeg";
@@ -18,13 +17,13 @@ const images = [
   { src: img7, alt: "Inventario 7" },
 ];
 
-export default function Inventario() {
+export default function Inventario({ onNavigate }) {
   return (
     <div className="home-container">
       <div className="hero-section">
-        <Link to="/" className="back-link">
+        <button onClick={() => onNavigate('home')} className="back-link">
           ↩️ Ir atrás
-        </Link>
+        </button>
         <p className="gallery-title">📦 Fotos de la mercancia</p>
 
         <div className="inventario-grid">

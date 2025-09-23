@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 // Importar todas las imágenes de premios
 import bicicleta from "../images/premios/bicicleta.png";
 import cafetera from "../images/premios/cafetera.png";

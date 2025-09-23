@@ -1,16 +1,9 @@
-interface NumberElementProps {
-  number: number;
-  isChecked: boolean;
-  isSelected: boolean;
-  onClick: (number: number) => void;
-}
-
 export default function NumberElement({
   number,
   isChecked,
   isSelected,
   onClick,
-}: NumberElementProps) {
+}) {
   const handleClick = () => {
     if (!isChecked) {
       onClick(number);
