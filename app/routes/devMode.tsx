@@ -100,7 +100,9 @@ export default function DevMode() {
 
             <div className="dev-input-container">
               <input
-                type="number"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 value={authCode}
                 disabled={isLoading}
                 onChange={(e) => {
@@ -114,7 +116,11 @@ export default function DevMode() {
                 className="dev-input auth-input ticket-input"
                 maxLength={4}
               />
-              <button onClick={handleAuth} className="dev-button" disabled={isLoading}>
+              <button
+                onClick={handleAuth}
+                className="dev-button"
+                disabled={isLoading}
+              >
                 OK
               </button>
             </div>
@@ -126,7 +132,9 @@ export default function DevMode() {
 
             <div className="dev-input-container">
               <input
-                type="number"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 value={ticketNumber}
                 disabled={isLoading}
                 onChange={(e) => {
