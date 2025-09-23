@@ -190,6 +190,17 @@ body {
   margin-left: 20px;
 }
 
+.tickets-remaining {
+  margin: 0;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #666;
+  margin-left: 20px;
+  margin-top: -10px;
+}
+
 .gallery-title-home {
   margin-bottom: 0px;
 }

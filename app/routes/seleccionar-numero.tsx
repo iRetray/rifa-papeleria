@@ -64,6 +64,9 @@ Quiero comprar mi boleta para ganarme la papelería.
           ↩️ Ir atrás
         </Link>
         <p className="gallery-title">✅ Elige tu número:</p>
+        <p className="tickets-remaining">
+          (quedan {loading ? "..." : 300 - soldTickets.length} boletas)
+        </p>
 
         {loading ? (
           <div className="loading-state">
