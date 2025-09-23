@@ -1,27 +1,18 @@
-// Importar todas las imágenes del inventario
-import img1 from "../images/inventario/1.jpeg";
-import img2 from "../images/inventario/2.jpeg";
-import img3 from "../images/inventario/3.jpeg";
-import img4 from "../images/inventario/4.jpeg";
-import img5 from "../images/inventario/5.jpeg";
-import img6 from "../images/inventario/6.jpeg";
-import img7 from "../images/inventario/7.jpeg";
-
 const images = [
-  { src: img1, alt: "Inventario 1" },
-  { src: img2, alt: "Inventario 2" },
-  { src: img3, alt: "Inventario 3" },
-  { src: img4, alt: "Inventario 4" },
-  { src: img5, alt: "Inventario 5" },
-  { src: img6, alt: "Inventario 6" },
-  { src: img7, alt: "Inventario 7" },
+  { src: "https://iili.io/KcVuwdv.md.jpg", alt: "Inventario 1" },
+  { src: "https://iili.io/KcVuOep.md.jpg", alt: "Inventario 2" },
+  { src: "https://iili.io/KcVuemN.md.jpg", alt: "Inventario 3" },
+  { src: "https://iili.io/KcVu8Xt.md.jpg", alt: "Inventario 4" },
+  { src: "https://iili.io/KcVuSLX.md.jpg", alt: "Inventario 5" },
+  { src: "https://iili.io/KcVugBn.md.jpg", alt: "Inventario 6" },
+  { src: "https://iili.io/KcVur1s.md.jpg", alt: "Inventario 7" },
 ];
 
 export default function Inventario({ onNavigate }) {
   return (
     <div className="home-container">
       <div className="hero-section">
-        <button onClick={() => onNavigate('home')} className="back-link">
+        <button onClick={() => onNavigate("home")} className="back-link">
           ↩️ Ir atrás
         </button>
         <p className="gallery-title">📦 Fotos de la mercancia</p>

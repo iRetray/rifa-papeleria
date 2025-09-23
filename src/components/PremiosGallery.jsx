@@ -1,19 +1,21 @@
-// Importar todas las imágenes de premios
-import bicicleta from "../images/premios/bicicleta.png";
-import cafetera from "../images/premios/cafetera.png";
-import cobijas from "../images/premios/cobijas.png";
-import platos from "../images/premios/platos.png";
-import toallas from "../images/premios/toallas.png";
-
 const premiosImages = [
   {
-    src: bicicleta,
+    src: "https://iili.io/KcVuMLF.md.png",
     name: "Bicicleta RIN 29 - Marco en Aluminio - Freno hidraulico",
   },
-  { src: cafetera, name: "Cafetera Universal - 12 Tazas" },
-  { src: cobijas, name: "Cobijas + Sabanas + Cubrelechos" },
-  { src: platos, name: "Vajilla de Lujo Marca Corona" },
-  { src: toallas, name: "Set 2 toallas Cannon Excelente calidad" },
+  { src: "https://iili.io/KcVuWqg.png", name: "Cafetera Universal - 12 Tazas" },
+  {
+    src: "https://iili.io/KcVuX1a.md.png",
+    name: "Cobijas + Sabanas + Cubrelechos",
+  },
+  {
+    src: "https://iili.io/KcVuhrJ.md.png",
+    name: "Vajilla de Lujo Marca Corona",
+  },
+  {
+    src: "https://iili.io/KcVuN7R.png",
+    name: "Set 2 toallas Cannon Excelente calidad",
+  },
 ];
 
 export default function PremiosGallery() {

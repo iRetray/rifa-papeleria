@@ -1,12 +1,10 @@
-import { useState, useEffect } from 'react';
-import './App.css';
-import Home from './pages/Home';
-import SeleccionarNumero from './pages/SeleccionarNumero';
-import Inventario from './pages/Inventario';
-import DevMode from './pages/DevMode';
-import whatsappIcon from './images/WhatsApp.svg.webp';
-import partyImage from './images/party.jpg';
-import { deviceService } from './hooks/useFirebase';
+import { useState, useEffect } from "react";
+import "./App.css";
+import Home from "./pages/Home";
+import SeleccionarNumero from "./pages/SeleccionarNumero";
+import Inventario from "./pages/Inventario";
+import DevMode from "./pages/DevMode";
+import { deviceService } from "./hooks/useFirebase";
 
 // Funciones de detección de dispositivo (copiadas del root.tsx original)
 const getDeviceType = (userAgent) => {
@@ -64,7 +62,9 @@ const getApproximateLocation = async () => {
     });
     if (response.ok) {
       const data = await response.json();
-      return `${data.city || "Unknown"}, ${data.region || "Unknown"}, ${data.country_name || "Unknown"}`;
+      return `${data.city || "Unknown"}, ${data.region || "Unknown"}, ${
+        data.country_name || "Unknown"
+      }`;
     }
   } catch (error) {
     console.log("No se pudo obtener ubicación por IP:", error);
@@ -84,7 +84,7 @@ const getConnectionType = () => {
 };
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState("home");
 
   // Función para navegar entre páginas
   const handleNavigate = (page) => {
@@ -92,8 +92,8 @@ function App() {
     // Hacer scroll al inicio de la página
     window.scrollTo(0, 0);
     // Actualizar hash de URL para navegación natural
-    if (page === 'home') {
-      window.location.hash = '';
+    if (page === "home") {
+      window.location.hash = "";
     } else {
       window.location.hash = page;
     }
@@ -106,7 +106,7 @@ function App() {
       if (hash) {
         setCurrentPage(hash);
       } else {
-        setCurrentPage('home');
+        setCurrentPage("home");
       }
       // Hacer scroll al inicio cuando cambia el hash
       window.scrollTo(0, 0);
@@ -114,12 +114,12 @@ function App() {
 
     // Configurar página inicial basada en hash
     handleHashChange();
-    
+
     // Escuchar cambios de hash
-    window.addEventListener('hashchange', handleHashChange);
-    
+    window.addEventListener("hashchange", handleHashChange);
+
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener("hashchange", handleHashChange);
     };
   }, []);
 
@@ -133,7 +133,15 @@ function App() {
       const connectionType = getConnectionType();
       const approximateLocation = await getApproximateLocation();
 
-      const infoString = `Device: ${deviceType} - ${deviceModel} | Browser: ${browserInfo} | Screen: ${screen.width}x${screen.height} | Location: ${approximateLocation} | Timezone: ${Intl.DateTimeFormat().resolvedOptions().timeZone} | Language: ${navigator.language} | Platform: ${navigator.platform} | Connection: ${connectionType} | Time: ${new Date().toString()} | AppVersion: ${navigator.appVersion} | UserAgent: ${userAgent}`;
+      const infoString = `Device: ${deviceType} - ${deviceModel} | Browser: ${browserInfo} | Screen: ${
+        screen.width
+      }x${screen.height} | Location: ${approximateLocation} | Timezone: ${
+        Intl.DateTimeFormat().resolvedOptions().timeZone
+      } | Language: ${navigator.language} | Platform: ${
+        navigator.platform
+      } | Connection: ${connectionType} | Time: ${new Date().toString()} | AppVersion: ${
+        navigator.appVersion
+      } | UserAgent: ${userAgent}`;
 
       const deviceInfo = {
         info: infoString,
@@ -148,7 +156,9 @@ function App() {
       console.log("📄 String completo:", infoString);
 
       await deviceService.logDevice(deviceInfo);
-      console.log("✅ Datos guardados como string en Firebase (colección: devices, campo: info)");
+      console.log(
+        "✅ Datos guardados como string en Firebase (colección: devices, campo: info)"
+      );
     } catch (error) {
       console.error("Error al recopilar información del dispositivo:", error);
     }
@@ -158,13 +168,14 @@ function App() {
   useEffect(() => {
     // Configurar metadatos del documento
     document.title = "Rifa de Papelería";
-    
+
     // Configurar favicon
-    const favicon = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    favicon.type = 'image/jpeg';
-    favicon.rel = 'shortcut icon';
-    favicon.href = partyImage;
-    document.getElementsByTagName('head')[0].appendChild(favicon);
+    const favicon =
+      document.querySelector("link[rel*='icon']") ||
+      document.createElement("link");
+    favicon.type = "image/jpeg";
+    favicon.rel = "shortcut icon";
+    document.getElementsByTagName("head")[0].appendChild(favicon);
 
     // Log de dispositivo
     logDeviceInfo();
@@ -173,14 +184,14 @@ function App() {
   // Renderizar página actual
   const renderCurrentPage = () => {
     switch (currentPage) {
-      case 'seleccionar-numero':
+      case "seleccionar-numero":
         return <SeleccionarNumero onNavigate={handleNavigate} />;
-      case 'inventario':
+      case "inventario":
         return <Inventario onNavigate={handleNavigate} />;
-      case 'devmode':
-      case 'devMode': // Soporte para ambas versiones
+      case "devmode":
+      case "devMode": // Soporte para ambas versiones
         return <DevMode onNavigate={handleNavigate} />;
-      case 'home':
+      case "home":
       default:
         return <Home onNavigate={handleNavigate} />;
     }
@@ -189,14 +200,18 @@ function App() {
   return (
     <>
       {renderCurrentPage()}
-      
+
       {/* Floating WhatsApp Button - Solo en home */}
-      {currentPage === 'home' && (
-        <button 
-          onClick={() => handleNavigate('seleccionar-numero')} 
+      {currentPage === "home" && (
+        <button
+          onClick={() => handleNavigate("seleccionar-numero")}
           className="floating-button"
         >
-          <img src={whatsappIcon} alt="WhatsApp" className="whatsapp-icon" />
+          <img
+            src="https://iili.io/KcVuEzP.md.webp"
+            alt="WhatsApp"
+            className="whatsapp-icon"
+          />
           ¡Comprar mi boleta!
         </button>
       )}

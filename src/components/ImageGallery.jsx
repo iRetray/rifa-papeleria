@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 
-// Importar todas las imágenes del inventario
-import img1 from "../images/inventario/1.jpeg";
-import img2 from "../images/inventario/2.jpeg";
-import img3 from "../images/inventario/3.jpeg";
-import img4 from "../images/inventario/4.jpeg";
-import img5 from "../images/inventario/5.jpeg";
-import img6 from "../images/inventario/6.jpeg";
-import img7 from "../images/inventario/7.jpeg";
-
-const images = [img1, img2, img3, img4, img5, img6, img7];
+const images = [
+  "https://iili.io/KcVuwdv.md.jpg",
+  "https://iili.io/KcVuOep.md.jpg",
+  "https://iili.io/KcVuemN.md.jpg",
+  "https://iili.io/KcVu8Xt.md.jpg",
+  "https://iili.io/KcVuSLX.md.jpg",
+  "https://iili.io/KcVugBn.md.jpg",
+  "https://iili.io/KcVur1s.md.jpg",
+];
 
 export default function ImageGallery({ onViewAll }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,7 +52,9 @@ export default function ImageGallery({ onViewAll }) {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`gallery-indicator ${index === currentIndex ? "active" : ""}`}
+            className={`gallery-indicator ${
+              index === currentIndex ? "active" : ""
+            }`}
             onClick={() => setCurrentIndex(index)}
           />
         ))}

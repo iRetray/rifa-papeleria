@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import ProgressBar from "../components/ProgressBar";
 import ImageGallery from "../components/ImageGallery";
 import PremiosGallery from "../components/PremiosGallery";
-import tituloImage from "../images/titulo.png";
-import portadaImage from "../images/portada.jpeg";
 import { ticketService } from "../hooks/useFirebase";
 
 export default function Home({ onNavigate }) {
@@ -23,12 +21,16 @@ export default function Home({ onNavigate }) {
     <div className="home-container">
       <div className="hero-section">
         <img
-          src={tituloImage}
+          src="https://iili.io/KcVzhg4.md.png"
           alt="Rifa de Papelería"
           className="titulo-image"
         />
 
-        <img src={portadaImage} alt="Portada Rifa" className="portada-image" />
+        <img
+          src="https://iili.io/KcVzhg4.md.png"
+          alt="Portada Rifa"
+          className="portada-image"
+        />
 
         <p className="info-text">
           ✨✅ <strong>Bien surtido</strong>
@@ -53,7 +55,7 @@ export default function Home({ onNavigate }) {
 
         <ProgressBar />
 
-        <ImageGallery onViewAll={() => onNavigate('inventario')} />
+        <ImageGallery onViewAll={() => onNavigate("inventario")} />
 
         {soldTickets.length === totalBoletas && (
           <div className="sold-out-message">

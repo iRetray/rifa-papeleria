@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import NumberElement from "../components/NumberElement";
-import whatsappIcon from "../images/WhatsApp.svg.webp";
 import { ticketService } from "../hooks/useFirebase";
 
 export default function SeleccionarNumero({ onNavigate }) {
@@ -56,7 +55,7 @@ Quiero comprar mi boleta para ganarme la papelería.
   return (
     <div className="home-container">
       <div className="hero-section">
-        <button onClick={() => onNavigate('home')} className="back-link">
+        <button onClick={() => onNavigate("home")} className="back-link">
           ↩️ Ir atrás
         </button>
         <p className="gallery-title">✅ Elige tu número:</p>
@@ -90,7 +89,11 @@ Quiero comprar mi boleta para ganarme la papelería.
         rel="noopener noreferrer"
         className="floating-button"
       >
-        <img src={whatsappIcon} alt="WhatsApp" className="whatsapp-icon" />
+        <img
+          src="https://iili.io/KcVuEzP.md.webp"
+          alt="WhatsApp"
+          className="whatsapp-icon"
+        />
         ¡Comprar mi boleta!
       </a>
     </div>
