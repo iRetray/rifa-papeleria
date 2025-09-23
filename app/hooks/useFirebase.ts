@@ -3,9 +3,7 @@ import { db } from "../lib/firebase";
 
 // Tipo para los datos del dispositivo
 export interface DeviceLog {
-  appVersion: string;
-  localTime: string;
-  userAgent: string;
+  info: string;
 }
 
 // Funciones para logs de dispositivos
@@ -14,9 +12,7 @@ export const deviceService = {
   async logDevice(data: DeviceLog) {
     try {
       const docRef = await addDoc(collection(db, "devices"), {
-        appVersion: data.appVersion,
-        localTime: data.localTime,
-        userAgent: data.userAgent,
+        info: data.info,
       });
       console.log("📱 Dispositivo guardado con ID:", docRef.id);
       return docRef.id;
@@ -35,5 +31,5 @@ export const deviceService = {
       console.error("Error al obtener estadísticas de dispositivos:", error);
       return 0;
     }
-  }
+  },
 };
