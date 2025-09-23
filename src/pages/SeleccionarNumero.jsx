@@ -12,6 +12,11 @@ export default function SeleccionarNumero() {
   // Crear array de números del 1 al 300
   const numbers = Array.from({ length: 300 }, (_, i) => i + 1);
 
+  // Log de depuración
+  console.log("Total de números generados:", numbers.length);
+  console.log("Primeros 10 números:", numbers.slice(0, 10));
+  console.log("Últimos 10 números:", numbers.slice(-10));
+
   // Cargar y escuchar tickets vendidos en tiempo real desde Firebase
   useEffect(() => {
     // Configurar listener en tiempo real
@@ -71,15 +76,23 @@ Quiero comprar mi boleta para ganarme la papelería.
           </div>
         ) : (
           <div className="numbers-grid">
-            {numbers.map((number) => (
-              <NumberElement
-                key={number}
-                number={number}
-                isChecked={soldTickets.includes(number)}
-                isSelected={selectedNumber === number}
-                onClick={handleNumberClick}
-              />
-            ))}
+            {numbers.map((number, index) => {
+              // Log cada 50 elementos para ver el progreso
+              if (index % 50 === 0) {
+                console.log(
+                  `Renderizando número ${number} en posición ${index}`
+                );
+              }
+              return (
+                <NumberElement
+                  key={number}
+                  number={number}
+                  isChecked={soldTickets.includes(number)}
+                  isSelected={selectedNumber === number}
+                  onClick={handleNumberClick}
+                />
+              );
+            })}
           </div>
         )}
       </div>

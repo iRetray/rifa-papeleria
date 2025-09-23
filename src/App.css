@@ -1,4 +1,7 @@
 /* Clean slate - no styles */
+* {
+  box-sizing: border-box;
+}
 
 /* Color Palette - Festive Stationery Colors */
 :root {
@@ -21,6 +24,8 @@
 html {
   overflow-x: hidden;
   background-color: white;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -32,12 +37,14 @@ body {
   margin-bottom: 125px;
   overflow-x: hidden;
   background-color: white;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
 /* Home Container */
 .home-container {
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   margin-top: 25px;
   position: relative;
   background-color: white;
@@ -479,11 +486,10 @@ body {
 
 /* Number Element Styles */
 .number-element {
-  border-width: 4px;
   position: relative;
-  width: 50px;
-  height: 50px;
-  border: 3px solid #003eb3;
+  width: 55px;
+  height: 55px;
+  border: 2px solid #003eb3;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -492,12 +498,14 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background-color: white;
   user-select: none;
-  border-width: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
-.number-element:hover {
-  transform: scale(1.05);
+.number-element:hover:not(.selected) {
+  transform: scale(1.03);
   box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+  z-index: 5;
 }
 
 .number-element.checked {
@@ -519,16 +527,12 @@ body {
 .number-element.selected {
   background-color: #ad2102;
   border-color: #fa541c;
-  border-width: 4px;
-  z-index: 10;
-  box-shadow: 0 8px 30px rgba(0, 62, 179, 0.8), 0 4px 15px rgba(0, 62, 179, 0.6);
-  transform: scale(1.25);
+  color: white;
 }
 
 .number-element.selected .number-text {
   color: white;
-  font-size: 1.2rem;
-  transform: scale(1.1);
+  font-weight: 700;
 }
 
 .number-text {
@@ -560,13 +564,14 @@ body {
 /* Numbers Grid Styles */
 .numbers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-  gap: 15px;
-  padding: 1rem 1rem;
-  max-width: 800px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+  gap: 10px;
+  padding: 20px;
+  width: 100vw;
+  margin: 0;
   justify-items: center;
   background-color: #4096ff;
+  box-sizing: border-box;
 }
 
 /* Inventario Grid Styles */
