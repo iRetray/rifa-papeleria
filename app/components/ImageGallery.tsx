@@ -25,7 +25,7 @@ export default function ImageGallery() {
 
   return (
     <div className="gallery-container">
-      <p className="gallery-title gallery-title-home">Fotos del negocio</p>
+      <p className="gallery-title gallery-title-home">📸 Fotos del negocio</p>
 
       {/* Carrusel de imágenes */}
       <div className="gallery-carousel">
