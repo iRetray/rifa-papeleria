@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import NumberElement from "../components/NumberElement";
 import whatsappIcon from "../images/WhatsApp.svg.webp";
 
@@ -9,7 +10,15 @@ export default function SeleccionarNumero() {
   const numbers = Array.from({ length: 300 }, (_, i) => i + 1);
 
   // Por ahora, algunos números están marcados como ejemplo
-  const checkedNumbers = [15, 23, 45, 67, 89, 123, 156, 189, 234, 267];
+  const checkedNumbers = [
+    1, 3, 7, 12, 15, 18, 23, 28, 31, 34, 39, 42, 45, 48, 52, 56, 61, 67, 72, 75,
+    79, 84, 89, 92, 97, 103, 108, 112, 117, 123, 128, 133, 138, 142, 147, 151,
+    156, 162, 167, 171, 176, 181, 185, 189, 194, 198, 203, 208, 213, 218, 223,
+    227, 232, 234, 239, 243, 248, 252, 256, 261, 267, 272, 276, 281, 285, 289,
+    294, 298, 24, 58, 91, 124, 158, 192, 225, 259, 36, 69, 102, 135, 169, 202,
+    236, 270, 14, 47, 81, 115, 149, 183, 217, 251, 285, 19, 53, 87, 121, 155,
+    189, 223, 257, 291, 6,
+  ];
 
   const handleNumberClick = (number: number) => {
     setSelectedNumber(selectedNumber === number ? null : number);
@@ -41,7 +50,10 @@ Quiero comprar mi boleta para ganarme la papelería.
   return (
     <div className="home-container">
       <div className="hero-section">
-        <p className="gallery-title">Elige tu número:</p>
+        <Link to="/" className="back-link">
+          ↩️ Ir atrás
+        </Link>
+        <p className="gallery-title">✅ Elige tu número:</p>
 
         <div className="numbers-grid">
           {numbers.map((number) => (

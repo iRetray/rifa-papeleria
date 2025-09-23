@@ -46,14 +46,16 @@ export default function Home() {
           paradero en la <strong>Carrera 12a # 4a - 15</strong>
           <br />
           📆 La fecha del sorteo dependerá de los cupos 👉 calculamos aprox. el
-          <strong> 15 de octubre</strong>, pero si es necesario daremos más
-          tiempo para que todos puedan participar y cancelar su boleta.
+          <strong> 31 de octubre</strong> a primeras{" "}
+          <strong>semanas de noviembre</strong>, pero si es necesario daremos
+          más tiempo para que todos puedan participar y cancelar su boleta.
           <br />
           👥 Quienes aparten su boleta ingresarán a un{" "}
           <strong>grupo exclusivo de WhatsApp</strong>, donde recibirán todas
           las actualizaciones y detalles del sorteo.
           <br />✨ Esta oportunidad llega porque{" "}
-          <strong>cambiamos de lugar de residencia</strong> ✨
+          <strong>cambiamos de lugar de residencia</strong> ✨ Y nuestra
+          clientela y acreditación se encuentran en este punto.
         </p>
 
         <ProgressBar sold={boletasVendidas} total={totalBoletas} />

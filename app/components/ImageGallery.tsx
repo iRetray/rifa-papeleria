@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 // Importar todas las imágenes del inventario
 import img1 from "../images/inventario/1.jpeg";
@@ -12,28 +13,58 @@ import img7 from "../images/inventario/7.jpeg";
 const images = [img1, img2, img3, img4, img5, img6, img7];
 
 export default function ImageGallery() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 2000); // Cambia cada 2 segundos
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="gallery-container">
-      <p className="gallery-title">Fotos del negocio</p>
-      <div className="gallery-wrapper">
-        <div className="gallery-track">
-          {/* Duplicamos las imágenes para crear el efecto infinito */}
-          {[...images, ...images].map((img, index) => (
-            <div key={index} className="gallery-item">
+      <p className="gallery-title gallery-title-home">Fotos del negocio</p>
+
+      {/* Carrusel de imágenes */}
+      <div className="gallery-carousel">
+        <div
+          className="gallery-track"
+          style={{
+            transform: `translateX(-${currentIndex * 14.285}%)`,
+            transition: "transform 0.5s ease-in-out",
+          }}
+        >
+          {images.map((img, index) => (
+            <div key={index} className="gallery-slide">
               <img
                 src={img}
-                alt={`Foto del negocio ${(index % images.length) + 1}`}
-                loading={index < 3 ? "eager" : "lazy"}
-                decoding="async"
+                alt={`Inventario ${index + 1}`}
+                className="gallery-image"
+                loading="lazy"
               />
             </div>
           ))}
         </div>
       </div>
 
+      {/* Indicadores */}
+      <div className="gallery-indicators">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            className={`gallery-indicator ${index === currentIndex ? "active" : ""}`}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
+      </div>
+
       {/* Botón Ver Todo */}
       <div className="gallery-button-container">
-        <button className="gallery-view-all-button">Ver todo</button>
+        <Link to="/inventario" className="gallery-view-all-button">
+          📦 Ver todas las fotos de la mercancia
+        </Link>
       </div>
     </div>
   );

@@ -189,41 +189,89 @@ body {
   margin-left: 20px;
 }
 
-.gallery-wrapper {
-  overflow: hidden;
+.gallery-title-home {
+  margin-bottom: 10px;
+}
+
+/* Carrusel Styles */
+.gallery-carousel {
+  position: relative;
   width: 100%;
-  border-radius: 0; /* Sin border-radius para llegar a los bordes */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 250px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #f0f0f0; /* Color de fondo temporal para debug */
 }
 
 .gallery-track {
   display: flex;
-  animation: slide 8s linear infinite;
-  width: calc(200%); /* Doble ancho para el efecto infinito */
-  will-change: transform; /* Optimización para animaciones */
+  width: 700%; /* 7 imágenes x 100% cada una */
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
-.gallery-item {
-  flex: 0 0 auto;
-  width: 175px; /* Más anchas: de 280px a 350px */
-  height: 250px; /* Mantiene la altura */
-  margin-right: 0.25rem; /* Menos espacio: de 1rem a 0.25rem */
+.gallery-slide {
+  width: 14.285%; /* 100% / 7 imágenes */
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
 }
 
-.gallery-item img {
+.gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  object-position: center;
+  display: block;
+  border: none;
 }
 
-@keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+/* Indicadores */
+.gallery-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.gallery-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-indicator.active {
+  background-color: var(--primary-blue);
+  transform: scale(1.2);
+}
+
+.gallery-indicator:hover {
+  background-color: var(--primary-blue);
+  opacity: 0.8;
+}
+
+/* Back Link Styles */
+.back-link {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-decoration: none;
+  margin-left: 20px;
+  margin-bottom: 15px;
+  text-align: left;
+  transition: all 0.2s ease;
+  font-family: "Coolvetica", sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.back-link:hover {
+  color: var(--text-dark);
 }
 
 /* Gallery Button Styles */
@@ -248,12 +296,12 @@ body {
   font-family: "Coolvetica", sans-serif;
   letter-spacing: 0.5px;
   min-width: 140px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .gallery-view-all-button:hover {
   background-color: black;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Test Controls */
@@ -361,7 +409,7 @@ body {
   font-weight: bold;
   padding: 12px 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
   border: none;
   cursor: pointer;
   display: flex;
@@ -376,7 +424,8 @@ body {
 
 .floating-button:hover {
   background-color: black;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
 .whatsapp-icon {
@@ -391,7 +440,7 @@ body {
   position: relative;
   width: 50px;
   height: 50px;
-  border: 3px solid var(--primary-blue);
+  border: 3px solid #003eb3;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -425,21 +474,25 @@ body {
 }
 
 .number-element.selected {
-  background-color: var(--primary-yellow);
-  border-color: var(--dark-yellow);
+  background-color: #ad2102;
+  border-color: #fa541c;
   border-width: 4px;
   z-index: 10;
+  box-shadow:
+    0 8px 30px rgba(0, 62, 179, 0.8),
+    0 4px 15px rgba(0, 62, 179, 0.6);
+  transform: scale(1.25);
 }
 
 .number-element.selected .number-text {
-  color: var(--text-dark);
+  color: white;
   font-size: 1.2rem;
   transform: scale(1.1);
 }
 
 .number-text {
   font-weight: bold;
-  font-size: 0.95rem;
+  font-size: 1.4rem;
   color: var(--primary-red);
   font-family: "Coolvetica", sans-serif;
   z-index: 1;
@@ -472,4 +525,38 @@ body {
   max-width: 800px;
   margin: 0 auto;
   justify-items: center;
+  background-color: #4096ff;
+}
+
+/* Inventario Grid Styles */
+.inventario-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.inventario-item {
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.inventario-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.inventario-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: optimizeQuality;
+  image-rendering: -webkit-optimize-contrast;
 }
