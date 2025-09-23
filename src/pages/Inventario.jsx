@@ -1,3 +1,5 @@
+import { useNavigation } from "../hooks/useNavigation";
+
 const images = [
   { src: "https://iili.io/KcVuwdv.md.jpg", alt: "Inventario 1" },
   { src: "https://iili.io/KcVuOep.md.jpg", alt: "Inventario 2" },
@@ -8,11 +10,12 @@ const images = [
   { src: "https://iili.io/KcVur1s.md.jpg", alt: "Inventario 7" },
 ];
 
-export default function Inventario({ onNavigate }) {
+export default function Inventario() {
+  const { handleNavigate } = useNavigation();
   return (
     <div className="home-container">
       <div className="hero-section">
-        <button onClick={() => onNavigate("home")} className="back-link">
+        <button onClick={() => handleNavigate("home")} className="back-link">
           ↩️ Ir atrás
         </button>
         <p className="gallery-title">📦 Fotos de la mercancia</p>

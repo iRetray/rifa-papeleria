@@ -1,0 +1,5 @@
+# Netlify configuration for SPA (Single Page Application)
+# This tells Netlify to serve the index.html for all routes
+# so that React Router can handle client-side routing
+
+/*    /index.html   200

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import NumberElement from "../components/NumberElement";
 import { ticketService } from "../hooks/useFirebase";
+import { useNavigation } from "../hooks/useNavigation";
 
-export default function SeleccionarNumero({ onNavigate }) {
+export default function SeleccionarNumero() {
+  const { handleNavigate } = useNavigation();
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [soldTickets, setSoldTickets] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -55,7 +57,7 @@ Quiero comprar mi boleta para ganarme la papelería.
   return (
     <div className="home-container">
       <div className="hero-section">
-        <button onClick={() => onNavigate("home")} className="back-link">
+        <button onClick={() => handleNavigate("home")} className="back-link">
           ↩️ Ir atrás
         </button>
         <p className="gallery-title">✅ Elige tu número:</p>

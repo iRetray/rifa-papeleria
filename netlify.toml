@@ -1,0 +1,21 @@
+[build]
+  # Vite builds to 'dist' by default
+  publish = "dist"
+  # Vite build command
+  command = "npm run build"
+
+[build.environment]
+  # Set Node.js version
+  NODE_VERSION = "18"
+
+[[redirects]]
+  # SPA fallback - serve index.html for all routes
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  # Local development settings
+  command = "npm run dev"
+  port = 5173
+  publish = "dist"

@@ -2,16 +2,16 @@
 
 Una aplicación web para gestionar una rifa de papelería con sistema de selección de números en tiempo real.
 
-## 🔄 Migración desde React Router
+## 🔄 Migración a Vite + React Router
 
-Esta aplicación fue migrada desde un proyecto que utilizaba React Router hacia un enfoque más simple usando **navegación con estado** y **hash routing**. La migración mantiene todas las funcionalidades originales pero simplifica la estructura.
+Esta aplicación fue migrada para utilizar **Vite** como build tool y **React Router** para navegación real con URLs. La migración mantiene todas las funcionalidades originales pero mejora el rendimiento y la navegación.
 
 ### Cambios principales:
-- ✅ Removido React Router y dependencias relacionadas
-- ✅ Implementada navegación simple con estado de React
-- ✅ Soporte para navegación con hash (#) en la URL
+- ✅ Migrado de Create React App/Webpack a Vite
+- ✅ Implementado React Router para rutas reales
+- ✅ Configuración optimizada para Netlify
 - ✅ Funcionalidad completa de Firebase preservada
-- ✅ Todos los componentes migrados a JSX
+- ✅ Todos los componentes actualizados para usar React Router
 - ✅ Estilos CSS completamente preservados
 
 ## 🚀 Características
@@ -49,12 +49,12 @@ npm run build
 
 ## 🔗 Navegación
 
-La aplicación utiliza navegación simple con soporte para URLs:
+La aplicación utiliza React Router con URLs reales:
 
-- `/` o `#home` - Página principal
-- `#seleccionar-numero` - Selección de números
-- `#inventario` - Galería de mercancía
-- `#devmode` - Panel administrativo (requiere código)
+- `/` - Página principal
+- `/seleccionar-numero` - Selección de números
+- `/inventario` - Galería de mercancía
+- `/devHome` - Panel administrativo (requiere código)
 
 ## 🏗️ Estructura del Proyecto
 
@@ -110,15 +110,34 @@ La aplicación utiliza Firebase Firestore para sincronización en tiempo real:
 - Múltiples usuarios pueden ver cambios al mismo tiempo
 - Progreso de ventas actualizado automáticamente
 
-## 🚀 Deploy
+## 🚀 Deploy en Netlify
 
-Para desplegar la aplicación:
+Esta aplicación está configurada para desplegarse en Netlify con Vite. 
+
+### Configuración automática:
+
+1. **Build Command**: `npm run build`
+2. **Publish Directory**: `dist`
+3. **Node Version**: 18
+
+### Archivos de configuración incluidos:
+
+- `netlify.toml` - Configuración principal de Netlify
+- `public/_redirects` - Redireccionamiento SPA para React Router
+
+### Deploy manual:
 
 ```bash
 npm run build
 ```
 
 Los archivos de producción estarán en la carpeta `dist/`.
+
+### Deploy automático:
+
+1. Conecta tu repositorio a Netlify
+2. Netlify detectará automáticamente la configuración de Vite
+3. Las rutas SPA funcionarán correctamente gracias a los archivos de configuración
 
 ## 🐛 Resolución de Problemas
 

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { ticketService } from "../hooks/useFirebase";
+import { useNavigation } from "../hooks/useNavigation";
 
-export default function DevMode({ onNavigate }) {
+export default function DevMode() {
+  const { handleNavigate } = useNavigation();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authInput, setAuthInput] = useState("");
   const [ticketInput, setTicketInput] = useState("");
@@ -46,7 +48,7 @@ export default function DevMode({ onNavigate }) {
     return (
       <div className="home-container">
         <div className="hero-section">
-          <button onClick={() => onNavigate('home')} className="back-link">
+          <button onClick={() => handleNavigate('home')} className="back-link">
             ↩️ Ir atrás
           </button>
           <p className="gallery-title">🔐 Modo Desarrollador</p>
@@ -74,7 +76,7 @@ export default function DevMode({ onNavigate }) {
   return (
     <div className="home-container">
       <div className="hero-section">
-        <button onClick={() => onNavigate('home')} className="back-link">
+        <button onClick={() => handleNavigate('home')} className="back-link">
           ↩️ Ir atrás
         </button>
         <p className="gallery-title">⚙️ Panel de Control</p>

@@ -1,9 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
-import Home from "./pages/Home";
-import SeleccionarNumero from "./pages/SeleccionarNumero";
-import Inventario from "./pages/Inventario";
-import DevMode from "./pages/DevMode";
+import AppRoutes from "./routes/AppRoutes";
 import { deviceService } from "./hooks/useFirebase";
 
 // Funciones de detección de dispositivo (copiadas del root.tsx original)
@@ -84,45 +81,6 @@ const getConnectionType = () => {
 };
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("home");
-
-  // Función para navegar entre páginas
-  const handleNavigate = (page) => {
-    setCurrentPage(page);
-    // Hacer scroll al inicio de la página
-    window.scrollTo(0, 0);
-    // Actualizar hash de URL para navegación natural
-    if (page === "home") {
-      window.location.hash = "";
-    } else {
-      window.location.hash = page;
-    }
-  };
-
-  // Escuchar cambios en el hash para navegación con botones del navegador
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1); // Quitar el #
-      if (hash) {
-        setCurrentPage(hash);
-      } else {
-        setCurrentPage("home");
-      }
-      // Hacer scroll al inicio cuando cambia el hash
-      window.scrollTo(0, 0);
-    };
-
-    // Configurar página inicial basada en hash
-    handleHashChange();
-
-    // Escuchar cambios de hash
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
   // Log de información del dispositivo
   const logDeviceInfo = async () => {
     try {
@@ -181,42 +139,7 @@ function App() {
     logDeviceInfo();
   }, []);
 
-  // Renderizar página actual
-  const renderCurrentPage = () => {
-    switch (currentPage) {
-      case "seleccionar-numero":
-        return <SeleccionarNumero onNavigate={handleNavigate} />;
-      case "inventario":
-        return <Inventario onNavigate={handleNavigate} />;
-      case "devmode":
-      case "devMode": // Soporte para ambas versiones
-        return <DevMode onNavigate={handleNavigate} />;
-      case "home":
-      default:
-        return <Home onNavigate={handleNavigate} />;
-    }
-  };
-
-  return (
-    <>
-      {renderCurrentPage()}
-
-      {/* Floating WhatsApp Button - Solo en home */}
-      {currentPage === "home" && (
-        <button
-          onClick={() => handleNavigate("seleccionar-numero")}
-          className="floating-button"
-        >
-          <img
-            src="https://iili.io/KcVuEzP.md.webp"
-            alt="WhatsApp"
-            className="whatsapp-icon"
-          />
-          ¡Comprar mi boleta!
-        </button>
-      )}
-    </>
-  );
+  return <AppRoutes />;
 }
 
 export default App;

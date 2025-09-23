@@ -3,8 +3,10 @@ import ProgressBar from "../components/ProgressBar";
 import ImageGallery from "../components/ImageGallery";
 import PremiosGallery from "../components/PremiosGallery";
 import { ticketService } from "../hooks/useFirebase";
+import { useNavigation } from "../hooks/useNavigation";
 
-export default function Home({ onNavigate }) {
+export default function Home() {
+  const { handleNavigate } = useNavigation();
   const [soldTickets, setSoldTickets] = useState([]);
   const totalBoletas = 300;
 
@@ -55,7 +57,7 @@ export default function Home({ onNavigate }) {
 
         <ProgressBar />
 
-        <ImageGallery onViewAll={() => onNavigate("inventario")} />
+        <ImageGallery onViewAll={() => handleNavigate("inventario")} />
 
         {soldTickets.length === totalBoletas && (
           <div className="sold-out-message">
