@@ -1,12 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProgressBar from "../components/ProgressBar";
 import ImageGallery from "../components/ImageGallery";
+import PremiosGallery from "../components/PremiosGallery";
 import tituloImage from "../images/titulo.png";
 import portadaImage from "../images/portada.jpeg";
+import { ticketService } from "../hooks/useFirebase";
 
 export default function Home() {
-  const [boletasVendidas, setBoletasVendidas] = useState(100);
+  const [soldTickets, setSoldTickets] = useState<string[]>([]);
   const totalBoletas = 300;
+
+  // Escuchar cambios en los tickets vendidos para mostrar mensaje de agotado
+  useEffect(() => {
+    const unsubscribe = ticketService.onSoldTicketsChange((tickets) => {
+      setSoldTickets(tickets);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <div className="home-container">
@@ -38,35 +49,46 @@ export default function Home() {
           <strong>montar tu propio negocio</strong>, manejar tu tiempo ⏰,
           ponerte tu sueldo 💵, sin perder horas en el transporte 🚌 y con la
           libertad de irte de vacaciones cuando quieras 🏖️…
+        </p>
+
+        <ProgressBar />
+
+        <ImageGallery />
+
+        {soldTickets.length === totalBoletas && (
+          <div className="sold-out-message">
+            🎊 ¡Todas las boletas vendidas! 🎊
+          </div>
+        )}
+
+        <p className="gallery-title gallery-title-home">
+          ⁉️ ¿Cómo será la rifa?
+        </p>
+        <p className="info-text">
+          📞 Para más información visítanos en la calle comercial del barrio
+          Planadas, cerca al paradero en la{" "}
+          <strong>Carrera 12a # 4a - 15</strong>
           <br />
-          📞 Para más información y <strong>apartar tu puesto</strong> llama al:{" "}
-          <strong>3015628257</strong>
-          <br />
-          📍 O visítanos en la calle comercial del barrio Planadas, cerca al
-          paradero en la <strong>Carrera 12a # 4a - 15</strong>
           <br />
           📆 La fecha del sorteo dependerá de los cupos 👉 calculamos aprox. el
           <strong> 31 de octubre</strong> a primeras{" "}
           <strong>semanas de noviembre</strong>, pero si es necesario daremos
           más tiempo para que todos puedan participar y cancelar su boleta.
           <br />
+          <br />
           👥 Quienes aparten su boleta ingresarán a un{" "}
           <strong>grupo exclusivo de WhatsApp</strong>, donde recibirán todas
           las actualizaciones y detalles del sorteo.
-          <br />✨ Esta oportunidad llega porque{" "}
+          <br /> <br />✨ Esta oportunidad llega porque{" "}
           <strong>cambiamos de lugar de residencia</strong> ✨ Y nuestra
           clientela y acreditación se encuentran en este punto.
         </p>
 
-        <ProgressBar sold={boletasVendidas} total={totalBoletas} />
+        <p className="gallery-title gallery-title-home">
+          🎁 Premios adicionales
+        </p>
 
-        <ImageGallery />
-
-        {boletasVendidas === totalBoletas && (
-          <div className="sold-out-message">
-            🎊 ¡Todas las boletas vendidas! 🎊
-          </div>
-        )}
+        <PremiosGallery />
       </div>
     </div>
   );

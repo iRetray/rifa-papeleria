@@ -82,11 +82,11 @@ const getApproximateLocation = async (): Promise<string> => {
 
 // Función para obtener tipo de conexión
 const getConnectionType = (): string => {
-  // @ts-ignore - connection API experimental
+  // Use type assertion for experimental connection API
   const connection =
-    navigator.connection ||
-    navigator.mozConnection ||
-    navigator.webkitConnection;
+    (navigator as any).connection ||
+    (navigator as any).mozConnection ||
+    (navigator as any).webkitConnection;
   if (connection) {
     return connection.effectiveType || connection.type || "Unknown";
   }
@@ -142,6 +142,48 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Favicon y iconos de la app */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/party.jpg" />
+        <link rel="icon" type="image/jpeg" sizes="32x32" href="/party.jpg" />
+        <link rel="icon" type="image/jpeg" sizes="16x16" href="/party.jpg" />
+
+        {/* Metadatos de la aplicación */}
+        <title>Rifa de Papelería</title>
+        <meta
+          name="description"
+          content="Participa en la rifa de una papelería bien surtida, acreditada y ubicada. ¡Esta gran oportunidad es para ti!"
+        />
+        <meta
+          name="keywords"
+          content="rifa, papelería, negocio, sorteo, boletas"
+        />
+        <meta name="author" content="Rifa de Papelería" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Rifa de Papelería - ¡Tu oportunidad de negocio!"
+        />
+        <meta
+          property="og:description"
+          content="Participa en la rifa de una papelería bien surtida, acreditada y ubicada. ¡Esta gran oportunidad es para ti!"
+        />
+        <meta property="og:image" content="/party.jpg" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:title"
+          content="Rifa de Papelería - ¡Tu oportunidad de negocio!"
+        />
+        <meta
+          property="twitter:description"
+          content="Participa en la rifa de una papelería bien surtida, acreditada y ubicada. ¡Esta gran oportunidad es para ti!"
+        />
+        <meta property="twitter:image" content="/party.jpg" />
 
         <Meta />
         <Links />
