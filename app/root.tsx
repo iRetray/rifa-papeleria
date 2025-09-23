@@ -1,4 +1,12 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, Link, useLocation } from "react-router";
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  Link,
+  useLocation,
+} from "react-router";
 import "./app.css";
 import whatsappIcon from "./images/WhatsApp.svg.webp";
 import tituloImage from "./images/titulo.png";
@@ -6,19 +14,19 @@ import portadaImage from "./images/portada.jpeg";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const isSeleccionarNumero = location.pathname === '/seleccionar-numero';
+  const isSeleccionarNumero = location.pathname === "/seleccionar-numero";
 
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
+
         {/* Preload critical images */}
         <link rel="preload" as="image" href={tituloImage} />
         <link rel="preload" as="image" href={portadaImage} />
         <link rel="preload" as="image" href={whatsappIcon} />
-        
+
         <Meta />
         <Links />
       </head>
