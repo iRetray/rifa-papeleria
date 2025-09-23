@@ -38,9 +38,17 @@ export default function DevMode() {
 
   const handleMarkTicket = async () => {
     if (ticketNumber.length >= 1 && ticketNumber.length <= 3) {
-      // Formatear el número con ceros a la izquierda y convertir a número
+      // Convertir a número para validar rango
+      const ticketAsNumber = parseInt(ticketNumber, 10);
+
+      // Validar que esté en el rango 1-300
+      if (ticketAsNumber < 1 || ticketAsNumber > 300) {
+        alert("Ingresa un número válido entre 1 y 300");
+        return;
+      }
+
+      // Formatear el número con ceros a la izquierda
       const formattedTicket = ticketNumber.padStart(3, "0");
-      const ticketAsNumber = parseInt(formattedTicket, 10);
 
       setIsLoading(true); // Activar loader
 
@@ -67,7 +75,7 @@ export default function DevMode() {
         setIsLoading(false); // Desactivar loader siempre
       }
     } else {
-      alert("Ingresa un número válido (1-3 dígitos)");
+      alert("Ingresa un número válido entre 1 y 300");
     }
   };
 
@@ -139,7 +147,10 @@ export default function DevMode() {
                 disabled={isLoading}
                 onChange={(e) => {
                   const value = e.target.value.replace(/\D/g, ""); // Solo números
-                  if (value.length <= 3) {
+                  const numValue = parseInt(value, 10);
+
+                  // Permitir entrada vacía o números válidos (1-300)
+                  if (value === "" || (numValue >= 1 && numValue <= 300)) {
                     setTicketNumber(value);
                   }
                 }}
