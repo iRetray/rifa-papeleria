@@ -3,7 +3,6 @@ const premiosImages = [
     src: "https://iili.io/KcVuMLF.md.png",
     name: "Bicicleta RIN 29 - Marco en Aluminio - Freno hidraulico",
   },
-  { src: "https://iili.io/KcVuWqg.png", name: "Cafetera Universal - 12 Tazas" },
   {
     src: "https://iili.io/KcVuX1a.md.png",
     name: "Cobijas + Sabanas + Cubrelechos",
@@ -12,6 +11,7 @@ const premiosImages = [
     src: "https://iili.io/KcVuhrJ.md.png",
     name: "Vajilla de Lujo Marca Corona",
   },
+  { src: "https://iili.io/KcVuWqg.png", name: "Cafetera Universal - 12 Tazas" },
   {
     src: "https://iili.io/KcVuN7R.png",
     name: "Set 2 toallas Cannon Excelente calidad",

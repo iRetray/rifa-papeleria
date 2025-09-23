@@ -9,7 +9,7 @@ export default function DevMode() {
   const [ticketInput, setTicketInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const AUTH_CODE = "123"; // Código de acceso simple
+  const AUTH_CODE = "0101";
 
   const handleAuth = () => {
     if (authInput === AUTH_CODE) {
@@ -21,7 +21,7 @@ export default function DevMode() {
 
   const markTicketAsSold = async () => {
     const ticketNumber = parseInt(ticketInput);
-    
+
     if (!ticketNumber || ticketNumber < 1 || ticketNumber > 300) {
       alert("Por favor ingresa un número válido entre 1 y 300");
       return;
@@ -48,7 +48,7 @@ export default function DevMode() {
     return (
       <div className="home-container">
         <div className="hero-section">
-          <button onClick={() => handleNavigate('home')} className="back-link">
+          <button onClick={() => handleNavigate("home")} className="back-link">
             ↩️ Ir atrás
           </button>
           <p className="gallery-title">🔐 Modo Desarrollador</p>
@@ -61,7 +61,7 @@ export default function DevMode() {
                 onChange={(e) => setAuthInput(e.target.value)}
                 placeholder="Código"
                 className="dev-input auth-input"
-                onKeyPress={(e) => e.key === 'Enter' && handleAuth()}
+                onKeyPress={(e) => e.key === "Enter" && handleAuth()}
               />
               <button onClick={handleAuth} className="dev-button">
                 Acceder
@@ -76,7 +76,7 @@ export default function DevMode() {
   return (
     <div className="home-container">
       <div className="hero-section">
-        <button onClick={() => handleNavigate('home')} className="back-link">
+        <button onClick={() => handleNavigate("home")} className="back-link">
           ↩️ Ir atrás
         </button>
         <p className="gallery-title">⚙️ Panel de Control</p>
@@ -93,8 +93,8 @@ export default function DevMode() {
               max="300"
               disabled={loading}
             />
-            <button 
-              onClick={markTicketAsSold} 
+            <button
+              onClick={markTicketAsSold}
               className="dev-button"
               disabled={loading || !ticketInput}
             >
@@ -103,7 +103,9 @@ export default function DevMode() {
           </div>
 
           <div className="dev-info">
-            <p><strong>Instrucciones:</strong></p>
+            <p>
+              <strong>Instrucciones:</strong>
+            </p>
             <p>• Ingresa el número de la boleta (1-300)</p>
             <p>• Presiona "Marcar como Vendido"</p>
             <p>• El cambio se reflejará en tiempo real en toda la app</p>

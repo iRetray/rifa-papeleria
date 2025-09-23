@@ -29,7 +29,7 @@ export default function Home() {
         />
 
         <img
-          src="https://iili.io/KcVzhg4.md.png"
+          src="https://iili.io/KcVuGX1.md.jpg"
           alt="Portada Rifa"
           className="portada-image"
         />
