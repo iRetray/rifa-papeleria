@@ -5,4 +5,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+  build: {
+    cssCodeSplit: true,
+    assetsInlineLimit: 2048, // Inline assets smaller than 2kb
+    minify: 'esbuild',
+    target: 'es2015'
+  }
 });

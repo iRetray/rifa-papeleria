@@ -15,9 +15,17 @@ export default function Home() {
           src={tituloImage}
           alt="Rifa de Papelería"
           className="titulo-image"
+          loading="eager"
+          decoding="async"
         />
 
-        <img src={portadaImage} alt="Portada Rifa" className="portada-image" />
+        <img 
+          src={portadaImage} 
+          alt="Portada Rifa" 
+          className="portada-image"
+          loading="eager"
+          decoding="async"
+        />
 
         <p className="info-text">
           ✨✅ <strong>Bien surtido</strong>

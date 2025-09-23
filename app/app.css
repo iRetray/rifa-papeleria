@@ -64,6 +64,8 @@ body {
   width: 100%;
   height: auto;
   margin-bottom: 1rem;
+  image-rendering: optimizeQuality;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .portada-image {
@@ -71,6 +73,8 @@ body {
   height: auto;
   margin-bottom: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  image-rendering: optimizeQuality;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .hero-subtitle {
@@ -200,6 +204,7 @@ body {
   display: flex;
   animation: slide 8s linear infinite;
   width: calc(200%); /* Doble ancho para el efecto infinito */
+  will-change: transform; /* Optimización para animaciones */
 }
 
 .gallery-item {
@@ -214,6 +219,8 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+  image-rendering: optimizeQuality;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 @keyframes slide {

@@ -23,6 +23,8 @@ export default function ImageGallery() {
               <img
                 src={img}
                 alt={`Foto del negocio ${(index % images.length) + 1}`}
+                loading={index < 3 ? "eager" : "lazy"}
+                decoding="async"
               />
             </div>
           ))}
