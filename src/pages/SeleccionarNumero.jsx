@@ -38,7 +38,7 @@ export default function SeleccionarNumero() {
 
   // Generar el enlace de WhatsApp
   const generateWhatsAppLink = () => {
-    const phoneNumber = "573015628257";
+    const phoneNumber = "573006775552";
     let message;
 
     if (selectedNumber) {
