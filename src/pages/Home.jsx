@@ -34,19 +34,26 @@ export default function Home() {
           className="portada-image"
         />
 
+        <p className="gallery-title gallery-title-home">
+          Papelería, miscelanea y perfumería
+        </p>
+
         <p className="info-text">
           ✨✅ <strong>Bien surtido</strong>
           <br />
-          ✨🏅 <strong>Acreditado</strong>
+          ✨🏅 <strong>Bien acreditado con más de 18 años</strong>
           <br />
           ✨📍 <strong>Bien ubicado</strong>
           <br />
           <br />
           🎉 Se sorteará con{" "}
-          <strong>balotera en presencia de los participantes</strong> 🎉
+          <strong>balotera en presencia de los 300 participantes</strong> 🎉
           <br />
           <br />
-          💥 Además se sortearán otros <strong>¡buenísimos premios!</strong> 💥
+          💥 Además se sortearán otros <strong>
+            5 ¡buenísimos premios!
+          </strong>{" "}
+          💥
           <br />
           <br />
           🚀 ¡Esta gran oportunidad es para ti! 👉 Si has pensado en{" "}
@@ -69,8 +76,8 @@ export default function Home() {
           ⁉️ ¿Cómo será la rifa?
         </p>
         <p className="info-text">
-          📞 Para más información visítanos en la calle comercial del barrio
-          Planadas, cerca al paradero en la{" "}
+          📞 Para más información visítanos en la calle principal comercial del
+          barrio Planadas, cerca al paradero en la{" "}
           <strong>Carrera 12a # 4a - 15</strong>
           <br />
           <br />

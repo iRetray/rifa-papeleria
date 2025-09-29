@@ -647,18 +647,26 @@ body {
   margin: 0;
 }
 
+.premio-images-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+}
+
 .premio-image-container {
   width: 100%;
-  max-width: 350px; /* Aumentado de 250px a 350px */
+  max-width: 350px;
   display: flex;
-  justify-content: center; /* Volver a center para centrar las imágenes */
+  justify-content: center;
   align-items: center;
 }
 
 .premio-image {
   width: 100%;
   height: auto;
-  max-height: 300px; /* Aumentado de 200px a 300px */
+  max-height: 300px;
   object-fit: contain;
   border-radius: 12px;
 }
