@@ -561,7 +561,7 @@ body {
   z-index: 2;
 }
 
-/* Numbers Grid Styles */
+/* Numbers Grid Styles - Mobile First */
 .numbers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
@@ -974,7 +974,257 @@ body {
   }
 }
 
-/* Responsive adjustments for analytics */
+/* ==========================================
+   DESKTOP/WEB RESPONSIVE STYLES
+   ========================================== */
+
+/* Large Desktop Styles (1200px+) */
+@media (min-width: 1200px) {
+  body {
+    margin-bottom: 80px; /* Menos margen inferior en desktop */
+  }
+
+  .home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .hero-section {
+    padding: 2rem 0;
+  }
+
+  .hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Imágenes más controladas en desktop */
+  .titulo-image {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+  }
+
+  .portada-image {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    border-radius: 12px;
+  }
+
+  /* Info text más legible en desktop */
+  .info-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Gallery titles más grandes */
+  .gallery-title {
+    font-size: 2.2rem !important;
+    margin-bottom: 2rem;
+  }
+
+  /* Números grid mejorado para desktop */
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 12px;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* Progress bar mejorado */
+  .progress-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* Botones más grandes en desktop */
+  .action-button,
+  .back-link {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    min-width: 160px;
+  }
+
+  /* WhatsApp button reposicionado para desktop */
+  .floating-button {
+    right: 2rem;
+    bottom: 2rem;
+    left: auto; /* Remover left para desktop */
+    width: auto; /* Tamaño automático en desktop */
+    max-width: 280px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 25px;
+  }
+
+  /* Navigation improvements */
+  .back-link {
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .back-link:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* DevMode panels más amplios */
+  .dev-input-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .dev-input {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+
+  .dev-button {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+  }
+
+  /* Desktop Layout Improvements */
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Image galleries better positioned */
+  .premio-gallery,
+  .image-gallery {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
+
+  /* Better typography for desktop reading */
+  .gallery-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .tickets-remaining {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Form elements more spacious */
+  .form-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* Number elements hover effects */
+  .number-element:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Better spacing for desktop interaction */
+  .action-section {
+    margin: 3rem 0;
+  }
+
+  /* Loading states more elegant */
+  .loading-state {
+    padding: 4rem 2rem;
+  }
+
+  .loading-state p {
+    font-size: 1.4rem;
+  }
+}
+
+/* Medium Desktop Styles (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .home-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+
+  .numbers-grid {
+    grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+    gap: 10px;
+    padding: 1.5rem;
+  }
+}
+
+/* Tablet Landscape Styles (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .home-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.8rem;
+  }
+
+  .numbers-grid {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 8px;
+    padding: 1rem;
+  }
+
+  /* Layout en dos columnas para contenido */
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE STYLES (PRESERVED)
+   ========================================== */
+
+/* Mobile Styles (max-width: 767px) - Mantiene diseños originales */
+@media (max-width: 767px) {
+  /* Todos los estilos móviles existentes se mantienen intactos */
+  .home-container {
+    margin-top: 25px; /* Valor original móvil */
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem; /* Valor original móvil */
+  }
+}
+
+/* Analytics Responsive adjustments */
 @media (max-width: 768px) {
   .analytics-container {
     padding: 0 0.5rem;
@@ -1013,5 +1263,204 @@ body {
     min-width: auto;
     text-align: center;
     font-size: 1.5rem;
+  }
+}
+
+/* Desktop Analytics Improvements */
+@media (min-width: 1200px) {
+  .analytics-container {
+    padding: 0 2rem;
+  }
+
+  .analytics-section {
+    padding: 3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .analytics-section-title {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .analytics-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .analytics-stat-card {
+    padding: 3rem;
+  }
+
+  .stat-number {
+    font-size: 3.5rem;
+  }
+
+  .stat-label {
+    font-size: 1.3rem;
+  }
+
+  .chart-bar {
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+
+  .chart-label {
+    min-width: 200px;
+    font-size: 1.2rem;
+  }
+
+  .chart-value {
+    min-width: 150px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ==========================================
+   DESKTOP COMPONENT-SPECIFIC IMPROVEMENTS
+   ========================================== */
+
+/* Desktop Header and Navigation */
+@media (min-width: 1200px) {
+  /* Sticky navigation for better UX */
+  .desktop-nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 100;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  /* Better header layout */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Desktop image optimizations */
+  .hero-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 2rem auto;
+  }
+
+  .hero-images .titulo-image,
+  .hero-images .portada-image {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* Desktop card layouts */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Desktop modal and overlay improvements */
+  .modal-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-content {
+    max-width: 800px;
+    margin: 5vh auto;
+    border-radius: 20px;
+    padding: 3rem;
+  }
+
+  /* Desktop sidebar layout for complex pages */
+  .desktop-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .sidebar {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .main-content {
+    background: white;
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Desktop hover effects and animations */
+@media (min-width: 1200px) {
+  /* Button hover improvements */
+  .action-button:hover,
+  .dev-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Interactive elements */
+  .interactive-element {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .interactive-element:hover {
+    transform: scale(1.02);
+  }
+
+  /* Smooth scrolling for better navigation */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar for desktop */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-blue);
   }
 }

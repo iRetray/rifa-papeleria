@@ -4,11 +4,13 @@ import ImageGallery from "../components/ImageGallery";
 import PremiosGallery from "../components/PremiosGallery";
 import { ticketService } from "../hooks/useFirebase";
 import { useNavigation } from "../hooks/useNavigation";
+import useScreenSize from "../hooks/useScreenSize";
 
 export default function Home() {
   const { handleNavigate } = useNavigation();
   const [soldTickets, setSoldTickets] = useState([]);
   const totalBoletas = 300;
+  const { isDesktop } = useScreenSize();
 
   // Escuchar cambios en los tickets vendidos para mostrar mensaje de agotado
   useEffect(() => {
@@ -22,17 +24,35 @@ export default function Home() {
   return (
     <div className="home-container">
       <div className="hero-section">
-        <img
-          src="https://iili.io/KcVzhg4.md.png"
-          alt="Rifa de Papelería"
-          className="titulo-image"
-        />
-
-        <img
-          src="https://iili.io/KcVuGX1.md.jpg"
-          alt="Portada Rifa"
-          className="portada-image"
-        />
+        {isDesktop ? (
+          // Layout desktop con imágenes en grid
+          <div className="hero-images">
+            <img
+              src="https://iili.io/KcVzhg4.md.png"
+              alt="Rifa de Papelería"
+              className="titulo-image"
+            />
+            <img
+              src="https://iili.io/KcVuGX1.md.jpg"
+              alt="Portada Rifa"
+              className="portada-image"
+            />
+          </div>
+        ) : (
+          // Layout móvil original
+          <>
+            <img
+              src="https://iili.io/KcVzhg4.md.png"
+              alt="Rifa de Papelería"
+              className="titulo-image"
+            />
+            <img
+              src="https://iili.io/KcVuGX1.md.jpg"
+              alt="Portada Rifa"
+              className="portada-image"
+            />
+          </>
+        )}
 
         <p className="gallery-title gallery-title-home">
           Papelería, miscelanea y perfumería
@@ -64,12 +84,29 @@ export default function Home() {
 
         <ProgressBar />
 
-        <ImageGallery onViewAll={() => handleNavigate("inventario")} />
-
-        {soldTickets.length === totalBoletas && (
-          <div className="sold-out-message">
-            🎊 ¡Todas las boletas vendidas! 🎊
+        {isDesktop ? (
+          // Layout desktop con cards
+          <div className="card-grid">
+            <div className="card">
+              <h3>📦 Inventario</h3>
+              <ImageGallery onViewAll={() => handleNavigate("inventario")} />
+            </div>
+            {soldTickets.length === totalBoletas && (
+              <div className="card sold-out-card">
+                <h3>🎊 ¡Todas las boletas vendidas! 🎊</h3>
+              </div>
+            )}
           </div>
+        ) : (
+          // Layout móvil original
+          <>
+            <ImageGallery onViewAll={() => handleNavigate("inventario")} />
+            {soldTickets.length === totalBoletas && (
+              <div className="sold-out-message">
+                🎊 ¡Todas las boletas vendidas! 🎊
+              </div>
+            )}
+          </>
         )}
 
         <p className="gallery-title gallery-title-home">
