@@ -4,7 +4,12 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-
+  define: {
+    // Optimizaciones para Firebase
+    __FIREBASE_DEFAULTS__: JSON.stringify({
+      projectId: 'rifa-papeleria'
+    }),
+  },
   build: {
     // Optimizaciones críticas para reducir bundle size
     target: 'es2015',
