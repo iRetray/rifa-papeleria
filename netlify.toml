@@ -5,7 +5,7 @@
   command = "npm run build"
 
 [build.environment]
-  # Set Node.js version
+  # Set Node.js version compatible with Vite 5
   NODE_VERSION = "18"
 
 [[redirects]]
