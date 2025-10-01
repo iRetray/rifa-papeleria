@@ -11,7 +11,7 @@
 [[redirects]]
   # Redirección a Vercel - esta debe ir ANTES del fallback de SPA
   from = "/*"
-  to = "https://rifa-papeleria-dxcfjyog9-iretrays-projects.vercel.app/:splat"
+  to = "https://rifa-papeleria.vercel.app/:splat"
   status = 301
   force = true
 
