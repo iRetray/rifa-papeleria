@@ -17,11 +17,34 @@ export const deviceService = {
     try {
       const docRef = await addDoc(collection(db, "devices"), {
         info: data.info,
+        timestamp: new Date(),
       });
       console.log("📱 Dispositivo guardado con ID:", docRef.id);
       return docRef.id;
     } catch (error) {
       console.error("Error al registrar dispositivo:", error);
+      throw error;
+    }
+  },
+
+  // Obtener todos los dispositivos registrados
+  async getAllDevices() {
+    try {
+      const devicesCollection = collection(db, "devices");
+      const querySnapshot = await getDocs(devicesCollection);
+
+      const devices = [];
+      querySnapshot.forEach((doc) => {
+        devices.push({
+          id: doc.id,
+          ...doc.data(),
+        });
+      });
+
+      console.log("📱 Dispositivos obtenidos:", devices.length);
+      return devices;
+    } catch (error) {
+      console.error("Error al obtener dispositivos:", error);
       throw error;
     }
   },

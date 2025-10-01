@@ -103,6 +103,7 @@ function App() {
 
       const deviceInfo = {
         info: infoString,
+        timestamp: new Date(),
       };
 
       console.log("=== INFORMACIÓN COMPLETA DEL DISPOSITIVO ===");

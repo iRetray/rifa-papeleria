@@ -110,6 +110,19 @@ export default function DevMode() {
             <p>• Presiona "Marcar como Vendido"</p>
             <p>• El cambio se reflejará en tiempo real en toda la app</p>
           </div>
+
+          <div className="dev-navigation">
+            <button
+              onClick={() => handleNavigate("data")}
+              className="dev-button"
+              style={{
+                backgroundColor: "var(--primary-yellow)",
+                color: "var(--text-dark)",
+              }}
+            >
+              📊 Ver Analytics
+            </button>
+          </div>
         </div>
       </div>
     </div>
