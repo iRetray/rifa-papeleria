@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { deviceService } from "../hooks/useFirebase";
+import { deviceService } from "../hooks/useFirestoreOptimized";
 import { useNavigation } from "../hooks/useNavigation";
 
 export default function DataAnalytics() {
