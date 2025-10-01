@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import NumberElement from "../components/NumberElement";
-import { ticketService } from "../hooks/useFirestoreOptimized";
+import { ticketService } from "../hooks/useFirebase";
 import { useNavigation } from "../hooks/useNavigation";
 
 export default function SeleccionarNumero() {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ProgressBar from "../components/ProgressBar";
 import ImageGallery from "../components/ImageGallery";
 import PremiosGallery from "../components/PremiosGallery";
-import { ticketService } from "../hooks/useFirestoreOptimized";
+import { ticketService } from "../hooks/useFirebase";
 import { useNavigation } from "../hooks/useNavigation";
 
 export default function Home() {
@@ -12,19 +12,9 @@ export default function Home() {
 
   // Escuchar cambios en los tickets vendidos para mostrar mensaje de agotado
   useEffect(() => {
-    let unsubscribe = () => {};
-    
-    const setupListener = async () => {
-      try {
-        unsubscribe = await ticketService.onSoldTicketsChange((tickets) => {
-          setSoldTickets(tickets);
-        });
-      } catch (error) {
-        console.error('Error setting up tickets listener:', error);
-      }
-    };
-    
-    setupListener();
+    const unsubscribe = ticketService.onSoldTicketsChange((tickets) => {
+      setSoldTickets(tickets);
+    });
 
     return () => unsubscribe();
   }, []);

@@ -1,48 +1,21 @@
-// Lazy loading Firebase - no importar hasta que se necesite
-let firebaseInstance = null;
-
-const getFirebaseInstance = async () => {
-  if (!firebaseInstance) {
-    // Solo importar lo mínimo necesario de Firebase
-    const [
-      { initializeApp },
-      { getFirestore, collection, addDoc, getDocs, doc, onSnapshot, updateDoc, arrayUnion, setDoc }
-    ] = await Promise.all([
-      import('firebase/app'),
-      import('firebase/firestore')
-    ]);
-
-    // Configuración mínima solo para Firestore
-    const firebaseConfig = {
-      apiKey: "AIzaSyAxxfl8vvZtoFxG70-0Vl6goI4PRjM72bA",
-      projectId: "rifa-papeleria",
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    firebaseInstance = {
-      db,
-      collection,
-      addDoc,
-      getDocs,
-      doc,
-      onSnapshot,
-      updateDoc,
-      arrayUnion,
-      setDoc
-    };
-  }
-  return firebaseInstance;
-};
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  onSnapshot,
+  updateDoc,
+  arrayUnion,
+  setDoc,
+} from "firebase/firestore";
+import { db } from "../lib/firebase";
 
 // Tipo para los datos del dispositivo
 export const deviceService = {
   // Registrar dispositivo en la colección "devices"
   async logDevice(data) {
     try {
-      const firebase = await getFirebaseInstance();
-      const docRef = await firebase.addDoc(firebase.collection(firebase.db, "devices"), {
+      const docRef = await addDoc(collection(db, "devices"), {
         info: data.info,
         timestamp: new Date(),
       });
@@ -57,9 +30,8 @@ export const deviceService = {
   // Obtener todos los dispositivos registrados
   async getAllDevices() {
     try {
-      const firebase = await getFirebaseInstance();
-      const devicesCollection = firebase.collection(firebase.db, "devices");
-      const querySnapshot = await firebase.getDocs(devicesCollection);
+      const devicesCollection = collection(db, "devices");
+      const querySnapshot = await getDocs(devicesCollection);
 
       const devices = [];
       querySnapshot.forEach((doc) => {
@@ -81,13 +53,12 @@ export const deviceService = {
 // Funciones para tickets vendidos
 export const ticketService = {
   // Escuchar cambios en tiempo real de tickets vendidos
-  async onSoldTicketsChange(callback) {
+  onSoldTicketsChange(callback) {
     try {
-      const firebase = await getFirebaseInstance();
-      const ticketsCollection = firebase.collection(firebase.db, "tickets");
+      const ticketsCollection = collection(db, "tickets");
 
       // Configurar listener en tiempo real
-      const unsubscribe = firebase.onSnapshot(
+      const unsubscribe = onSnapshot(
         ticketsCollection,
         (snapshot) => {
           if (!snapshot.empty) {
@@ -118,26 +89,25 @@ export const ticketService = {
   // Marcar una boleta como vendida
   async markTicketAsSold(ticketNumber) {
     try {
-      const firebase = await getFirebaseInstance();
-      const ticketsCollection = firebase.collection(firebase.db, "tickets");
-      const querySnapshot = await firebase.getDocs(ticketsCollection);
+      const ticketsCollection = collection(db, "tickets");
+      const querySnapshot = await getDocs(ticketsCollection);
 
       if (!querySnapshot.empty) {
         // Usar el primer documento existente
         const firstDoc = querySnapshot.docs[0];
-        const docRef = firebase.doc(firebase.db, "tickets", firstDoc.id);
+        const docRef = doc(db, "tickets", firstDoc.id);
 
         // Agregar el ticket al array usando arrayUnion (evita duplicados automáticamente)
-        await firebase.updateDoc(docRef, {
-          soldTickets: firebase.arrayUnion(ticketNumber),
+        await updateDoc(docRef, {
+          soldTickets: arrayUnion(ticketNumber),
         });
 
         console.log(`✅ Ticket ${ticketNumber} marcado como vendido`);
         return true;
       } else {
         // Si no existe ningún documento, crear uno nuevo
-        const docRef = firebase.doc(firebase.db, "tickets", "main");
-        await firebase.setDoc(docRef, {
+        const docRef = doc(db, "tickets", "main");
+        await setDoc(docRef, {
           soldTickets: [ticketNumber],
         });
 

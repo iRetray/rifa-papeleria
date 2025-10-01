@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 import AppRoutes from "./routes/AppRoutes";
-import { deviceService } from "./hooks/useFirestoreOptimized";
+import { deviceService } from "./hooks/useFirebase";
 
 // Funciones de detección de dispositivo (copiadas del root.tsx original)
 const getDeviceType = (userAgent) => {

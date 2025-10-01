@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ticketService } from "../hooks/useFirestoreOptimized";
+import { ticketService } from "../hooks/useFirebase";
 
 export default function ProgressBar() {
   const [soldTickets, setSoldTickets] = useState([]);
@@ -11,22 +11,20 @@ export default function ProgressBar() {
 
   // Cargar y escuchar tickets vendidos en tiempo real desde Firebase
   useEffect(() => {
-    let unsubscribe = () => {};
-    
-    // Listener para tickets vendidos
-    const setupListener = async () => {
-      try {
-        unsubscribe = await ticketService.onSoldTicketsChange((tickets) => {
-          setSoldTickets(tickets);
-        });
-      } catch (error) {
-        console.error('Error setting up tickets listener:', error);
-      }
-    };
-    
-    setupListener();
+    console.log("🔥 Configurando listener para ProgressBar");
 
-    return () => unsubscribe();
+    // Configurar listener en tiempo real
+    const unsubscribe = ticketService.onSoldTicketsChange((tickets) => {
+      console.log("📊 ProgressBar actualizada con tickets:", tickets);
+      setSoldTickets(tickets);
+      setLoading(false);
+    });
+
+    // Cleanup: cancelar suscripción cuando el componente se desmonte
+    return () => {
+      console.log("🔌 Desconectando listener de ProgressBar");
+      unsubscribe();
+    };
   }, []);
 
   return (

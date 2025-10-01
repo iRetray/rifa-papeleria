@@ -4,149 +4,62 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json" />
-    
-    <!-- DNS prefetch for critical resources -->
-    <link rel="dns-prefetch" href="//firestore.googleapis.com" />
-    <link rel="dns-prefetch" href="//ipapi.co" />
-    
     <!-- Favicon y iconos de la app -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/src/images/party.jpg" />
     <link rel="icon" type="image/jpeg" sizes="32x32" href="/src/images/party.jpg" />
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="/src/images/party.jpg" />
 
     <!-- Metadatos de la aplicación -->
     <title>Rifa de Papelería</title>
-    <meta name="description" content="Participa en la rifa de una papelería bien surtida, acreditada y ubicada. ¡Esta gran oportunidad es para ti!" />
-    <meta name="keywords" content="rifa, papelería, negocio, sorteo, boletas" />
+    <meta
+      name="description"
+      content="Participa en la rifa de una papelería bien surtida, acreditada y ubicada. ¡Esta gran oportunidad es para ti!"
+    />
+    <meta
+      name="keywords"
+      content="rifa, papelería, negocio, sorteo, boletas"
+    />
     <meta name="author" content="Rifa de Papelería" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Rifa de Papelería - ¡Tu oportunidad de negocio!" />
-    <meta property="og:description" content="Participa en la rifa de una papelería bien surtida, acreditada y ubicada. ¡Esta gran oportunidad es para ti!" />
+    <meta
+      property="og:title"
+      content="Rifa de Papelería - ¡Tu oportunidad de negocio!"
+    />
+    <meta
+      property="og:description"
+      content="Participa en la rifa de una papelería bien surtida, acreditada y ubicada. ¡Esta gran oportunidad es para ti!"
+    />
     <meta property="og:image" content="/src/images/party.jpg" />
 
-    <!-- Performance optimizations -->
-    <meta name="theme-color" content="#4a90e2" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:title"
+      content="Rifa de Papelería - ¡Tu oportunidad de negocio!"
+    />
+    <meta
+      property="twitter:description"
+      content="Participa en la rifa de una papelería bien surtida, acreditada y ubicada. ¡Esta gran oportunidad es para ti!"
+    />
+    <meta property="twitter:image" content="/src/images/party.jpg" />
   </head>
   <body>
-    <div id="root">
-      <!-- Loading screen inmediato mientras carga el JS -->
-      <div id="initial-loading" style="
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #e3f2fd, #fff9c4);
-        font-family: 'Segoe UI', sans-serif;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 9999;
-      ">
-        <div style="
-          position: relative;
-          width: 60px;
-          height: 60px;
-          margin-bottom: 20px;
-        ">
-          <div style="
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 3px solid transparent;
-            border-top-color: #4a90e2;
-            border-radius: 50%;
-            animation: spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-          "></div>
-          <div style="
-            position: absolute;
-            width: 80%;
-            height: 80%;
-            top: 10%;
-            left: 10%;
-            border: 3px solid transparent;
-            border-top-color: #ffd700;
-            border-radius: 50%;
-            animation: spin 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite reverse;
-          "></div>
-        </div>
-        <h2 style="
-          color: #333;
-          margin: 0;
-          font-size: 1.5rem;
-          font-weight: 600;
-          background: linear-gradient(45deg, #4a90e2, #ff4444);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        ">Cargando Rifa de Papelería...</h2>
-        <p style="
-          color: #666;
-          margin: 10px 0 0 0;
-          font-size: 1rem;
-          opacity: 0.8;
-        ">Preparando tu experiencia</p>
-        <!-- Progress bar -->
-        <div style="
-          width: 200px;
-          height: 4px;
-          background: rgba(0,0,0,0.1);
-          border-radius: 2px;
-          margin-top: 20px;
-          overflow: hidden;
-        ">
-          <div style="
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, #4a90e2, #ffd700);
-            border-radius: 2px;
-            animation: progress 3s ease-in-out infinite;
-          "></div>
-        </div>
-      </div>
-      <style>
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        @keyframes progress {
-          0% { transform: translateX(-100%); }
-          50% { transform: translateX(0%); }
-          100% { transform: translateX(100%); }
-        }
-      </style>
-    </div>
-    <script>
-      // Registrar Service Worker para cachear recursos
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-              console.log('SW: Registered successfully', registration.scope);
-            })
-            .catch(function(error) {
-              console.log('SW: Registration failed', error);
-            });
-        });
-      }
-
-      // Remover loading screen cuando React esté listo
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          const loading = document.getElementById('initial-loading');
-          if (loading) {
-            loading.style.transition = 'opacity 0.5s ease-out';
-            loading.style.opacity = '0';
-            setTimeout(() => loading.remove(), 500);
-          }
-        }, 1000);
-      });
-    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rifa-papeleria-v2</title>
+  </head>
+  <body>
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

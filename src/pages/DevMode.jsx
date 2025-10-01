@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ticketService } from "../hooks/useFirestoreOptimized";
+import { ticketService } from "../hooks/useFirebase";
 import { useNavigation } from "../hooks/useNavigation";
 
 export default function DevMode() {
