@@ -4,6 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Script de redirección - DEBE ir al inicio para ejecutarse inmediatamente -->
+    <script>
+      // Redirección automática desde Netlify a Vercel
+      (function() {
+        // Verificar si estamos en el dominio de Netlify
+        if (window.location.hostname === 'rifa-papeleria.netlify.app') {
+          // Construir la URL de Vercel manteniendo la ruta actual
+          const vercelUrl = 'https://rifa-papeleria-dxcfjyog9-iretrays-projects.vercel.app' + window.location.pathname + window.location.search + window.location.hash;
+          
+          // Redireccionar inmediatamente
+          window.location.replace(vercelUrl);
+          
+          // Fallback por si replace no funciona
+          setTimeout(function() {
+            window.location.href = vercelUrl;
+          }, 100);
+        }
+      })();
+    </script>
+    
     <!-- Favicon y iconos de la app -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/src/images/party.jpg" />
@@ -45,18 +65,6 @@
       content="Participa en la rifa de una papelería bien surtida, acreditada y ubicada. ¡Esta gran oportunidad es para ti!"
     />
     <meta property="twitter:image" content="/src/images/party.jpg" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>rifa-papeleria-v2</title>
   </head>
   <body>
     <div id="root"></div>

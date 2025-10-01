@@ -9,7 +9,14 @@
   NODE_VERSION = "18"
 
 [[redirects]]
-  # SPA fallback - serve index.html for all routes
+  # Redirección a Vercel - esta debe ir ANTES del fallback de SPA
+  from = "/*"
+  to = "https://rifa-papeleria-dxcfjyog9-iretrays-projects.vercel.app/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  # SPA fallback - serve index.html for all routes (fallback si la redirección anterior no funciona)
   from = "/*"
   to = "/index.html"
   status = 200

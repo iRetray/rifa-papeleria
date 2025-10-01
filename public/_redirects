@@ -1,5 +1,5 @@
-# Netlify configuration for SPA (Single Page Application)
-# This tells Netlify to serve the index.html for all routes
-# so that React Router can handle client-side routing
+# Redirección automática a Vercel - más rápido y mejor
+/*    https://rifa-papeleria-dxcfjyog9-iretrays-projects.vercel.app/:splat   301!
 
+# Fallback para SPA (en caso de que la redirección anterior no funcione)
 /*    /index.html   200
