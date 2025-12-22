@@ -28,7 +28,7 @@ export default function Home() {
           // Layout desktop con imágenes en grid
           <div className="hero-images">
             <img
-              src="https://iili.io/KcVzhg4.md.png"
+              src="https://iili.io/fEM0NoP.md.png"
               alt="Rifa de Papelería"
               className="titulo-image"
             />
@@ -42,7 +42,7 @@ export default function Home() {
           // Layout móvil original
           <>
             <img
-              src="https://iili.io/KcVzhg4.md.png"
+              src="https://iili.io/fEM0NoP.md.png"
               alt="Rifa de Papelería"
               className="titulo-image"
             />
